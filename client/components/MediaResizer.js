@@ -12,13 +12,13 @@ class MediaResizer extends Component {
       // here we need to manually attach or detach Transformer node
       const stage = this.transformer.getStage();
       const { selectedShapeName } = this.props;
-  
+
       const selectedNode = stage.findOne('.' + selectedShapeName);
       // do nothing if selected node is already attached
       if (selectedNode === this.transformer.node()) {
         return;
       }
-  
+
       if (selectedNode) {
         // attach to another node
         this.transformer.attachTo(selectedNode);
@@ -28,7 +28,7 @@ class MediaResizer extends Component {
       }
       this.transformer.getLayer().batchDraw();
     }
-    
+
     render() {
       return (
         <Transformer
@@ -41,4 +41,3 @@ class MediaResizer extends Component {
   }
 
   export default MediaResizer
-  
