@@ -44,9 +44,9 @@ class Canvas extends Component {
     this.props.addPage(this.props.match.params.scrapbookid)
   }
 
-  handleStageMouseDown = e => {
+  handleStageMouseDown = event => {
     // clicked on stage - cler selection
-    if (e.target === e.target.getStage()) {
+    if (event.target === event.target.getStage()) {
       this.setState({
         selectedShapeName: ''
       })
@@ -55,13 +55,13 @@ class Canvas extends Component {
 
     // clicked on transformer - do nothing
     const clickedOnTransformer =
-      e.target.getParent().className === 'Transformer'
+      event.target.getParent().className === 'Transformer'
     if (clickedOnTransformer) {
       return
     }
 
     // find clicked image by its name
-    const name = e.target.name()
+    const name = event.target.name()
     // const rect = this.state.rectangles.find(r => r.name === name)
     const images = this.props.allMedia
     const text = this.props.allText.find(t => `${t.id}` === name)

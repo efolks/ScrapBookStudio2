@@ -260,9 +260,9 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Canvas).call(this));
 
-    _defineProperty(_assertThisInitialized(_this), "handleStageMouseDown", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleStageMouseDown", function (event) {
       // clicked on stage - cler selection
-      if (e.target === e.target.getStage()) {
+      if (event.target === event.target.getStage()) {
         _this.setState({
           selectedShapeName: ''
         });
@@ -271,14 +271,14 @@ function (_Component) {
       } // clicked on transformer - do nothing
 
 
-      var clickedOnTransformer = e.target.getParent().className === 'Transformer';
+      var clickedOnTransformer = event.target.getParent().className === 'Transformer';
 
       if (clickedOnTransformer) {
         return;
       } // find clicked image by its name
 
 
-      var name = e.target.name(); // const rect = this.state.rectangles.find(r => r.name === name)
+      var name = event.target.name(); // const rect = this.state.rectangles.find(r => r.name === name)
 
       var images = _this.props.allMedia;
 
@@ -87793,7 +87793,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
