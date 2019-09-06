@@ -37,7 +37,6 @@ class Canvas extends Component {
     await this.props.setSingleScrapbook(this.props.match.params.scrapbookid)
     this.props.setSinglePage(this.props.match.params.pageid)
     this.props.setNextAndPrevious()
-    // get from state
   }
 
   handlePageSubmit() {
@@ -45,24 +44,18 @@ class Canvas extends Component {
   }
 
   handleStageMouseDown = e => {
-    // clicked on stage - cler selection
     if (e.target === e.target.getStage()) {
       this.setState({
         selectedShapeName: ''
       })
       return
     }
-
-    // clicked on transformer - do nothing
     const clickedOnTransformer =
       e.target.getParent().className === 'Transformer'
     if (clickedOnTransformer) {
       return
     }
-
-    // find clicked image by its name
     const name = e.target.name()
-    // const rect = this.state.rectangles.find(r => r.name === name)
     const images = this.props.allMedia
     const text = this.props.allText.find(t => `${t.id}` === name)
     if (images || text) {
@@ -76,7 +69,6 @@ class Canvas extends Component {
     }
   }
 
-  //clicking on canvas deselects text and media
   handleOnClickLayer = () => {
     this.props.deselectCanvasElement()
   }
@@ -115,7 +107,6 @@ class Canvas extends Component {
                   width={1300}
                   height={500}
                   onMouseDown={this.handleStageMouseDown}
-                  // onClick={this.handleOnClickLayer}
                   onMouseOver={this.handleOnMouseOver}
                 >
                   <Provider store={store}>
@@ -138,7 +129,6 @@ class Canvas extends Component {
                         )
                       })}
                       {this.props.allMedia.map(media => {
-                        console.log('ALL MEDIA:', this.props.allMedia)
                         return (
                           <CanvasMedia
                             key={media.id}
@@ -154,9 +144,6 @@ class Canvas extends Component {
                           />
                         )
                       })}
-                      {/* {this.state.rectangles.map((rect, i) => (
-                        <Rectangle key={i} {...rect} />
-                      ))} */}
                       <MediaResizer
                         selectedShapeName={this.state.selectedShapeName}
                       />
@@ -196,7 +183,6 @@ class Canvas extends Component {
                     </button>
                   </Link>
                 ) : null}
-                {/* {this.props.allPages.length === 1 ? <Link onClick={this.handleOnClickNext} to={`/canvas/${this.props.match.params.scrapbookid}/${this.props.nextPage}`}><button className='button is-primary space' type='submit'>Next</button></Link> : null} */}
               </div>
               <div>
                 <div className="tile is-child">
@@ -207,19 +193,6 @@ class Canvas extends Component {
                 >
                   Add Page
                 </button>
-                  {/* <Link
-                    to={`/canvas/${this.props.match.params.scrapbookid}/${
-                      this.props.allPages.length
-                    }`}
-                  >
-                    <button
-                      className="button is-primary add-page-button space-button"
-                      onClick={this.handlePageSubmit}
-                      type="submit"
-                    >
-                      Add Page
-                    </button>
-                  </Link> */}
                 </div>
               </div>
             </div>
