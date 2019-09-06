@@ -62,6 +62,7 @@ class Canvas extends Component {
 
     // find clicked image by its name
     const name = event.target.name()
+    console.log('name:', name)
     // const rect = this.state.rectangles.find(r => r.name === name)
     const images = this.props.allMedia
     const text = this.props.allText.find(t => `${t.id}` === name)
@@ -138,7 +139,6 @@ class Canvas extends Component {
                         )
                       })}
                       {this.props.allMedia.map(media => {
-                        console.log('ALL MEDIA:', this.props.allMedia)
                         return (
                           <CanvasMedia
                             key={media.id}

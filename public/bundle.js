@@ -278,7 +278,8 @@ function (_Component) {
       } // find clicked image by its name
 
 
-      var name = event.target.name(); // const rect = this.state.rectangles.find(r => r.name === name)
+      var name = event.target.name();
+      console.log('name:', name); // const rect = this.state.rectangles.find(r => r.name === name)
 
       var images = _this.props.allMedia;
 
@@ -484,7 +485,6 @@ function (_Component) {
             name: "".concat(text.id)
           });
         }), _this2.props.allMedia.map(function (media) {
-          console.log('ALL MEDIA:', _this2.props.allMedia);
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CanvasMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
             key: media.id,
             src: media.path,
@@ -3663,23 +3663,21 @@ var getPageContentThunk = function getPageContentThunk(id) {
                 data = _ref2.data;
                 canvas_texts = data.text;
                 media = data.media;
-                console.log('THUNK TEXT', canvas_texts);
-                console.log('ID', id);
                 dispatch(getPageContent(canvas_texts, media));
-                _context.next = 15;
+                _context.next = 13;
                 break;
 
-              case 12:
-                _context.prev = 12;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 15:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 12]]);
+        }, _callee, null, [[0, 10]]);
       }));
 
       return function (_x) {
@@ -3836,23 +3834,22 @@ var createSingleMediaThunk = function createSingleMediaThunk(obj) {
               case 3:
                 _ref9 = _context5.sent;
                 data = _ref9.data;
-                console.log('D*****ATA', data); // console.log('HELLO FROM THUNK')
-
+                // console.log('HELLO FROM THUNK')
                 dispatch(createSingleMedia(data));
-                _context5.next = 12;
+                _context5.next = 11;
                 break;
 
-              case 9:
-                _context5.prev = 9;
+              case 8:
+                _context5.prev = 8;
                 _context5.t0 = _context5["catch"](0);
                 console.log(_context5.t0);
 
-              case 12:
+              case 11:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 9]]);
+        }, _callee5, null, [[0, 8]]);
       }));
 
       return function (_x5) {
@@ -3881,23 +3878,21 @@ var createSingleCloudMediaThunk = function createSingleCloudMediaThunk(obj) {
               case 3:
                 _ref11 = _context6.sent;
                 data = _ref11.data;
-                console.log('D*****ATA', data); // console.log('HELLO FROM THUNK')
-
                 dispatch(createSingleMedia(data));
-                _context6.next = 12;
+                _context6.next = 11;
                 break;
 
-              case 9:
-                _context6.prev = 9;
+              case 8:
+                _context6.prev = 8;
                 _context6.t0 = _context6["catch"](0);
                 console.log(_context6.t0);
 
-              case 12:
+              case 11:
               case "end":
                 return _context6.stop();
             }
           }
-        }, _callee6, null, [[0, 9]]);
+        }, _callee6, null, [[0, 8]]);
       }));
 
       return function (_x6) {
@@ -3964,28 +3959,27 @@ var getSingleMediaThunk = function getSingleMediaThunk(id) {
             switch (_context8.prev = _context8.next) {
               case 0:
                 _context8.prev = 0;
-                console.log('Id in get single media thunk', id);
-                _context8.next = 4;
+                _context8.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/media/".concat(id));
 
-              case 4:
+              case 3:
                 _ref15 = _context8.sent;
                 data = _ref15.data;
                 dispatch(getSingleMedia(data));
-                _context8.next = 12;
+                _context8.next = 11;
                 break;
 
-              case 9:
-                _context8.prev = 9;
+              case 8:
+                _context8.prev = 8;
                 _context8.t0 = _context8["catch"](0);
                 console.log(_context8.t0);
 
-              case 12:
+              case 11:
               case "end":
                 return _context8.stop();
             }
           }
-        }, _callee8, null, [[0, 9]]);
+        }, _callee8, null, [[0, 8]]);
       }));
 
       return function (_x8) {

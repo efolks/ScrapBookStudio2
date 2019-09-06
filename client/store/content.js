@@ -87,8 +87,6 @@ const DESELECT_CANVAS_ELEMENT = 'DESELECT_CANVAS_ELEMENT'
     const {data} = await axios.get(`/api/pages/${id}`)
     const canvas_texts = data.text
     const media = data.media
-    console.log('THUNK TEXT',canvas_texts)
-    console.log('ID', id)
     dispatch(getPageContent(canvas_texts, media))
   } catch (err) {
     console.error(err)
@@ -126,7 +124,6 @@ export const createSingleMediaThunk = obj => async dispatch => {
   // console.log('obj from content.js', obj)
   try {
     const {data} = await axios.post('/api/media', obj)
-    console.log('D*****ATA', data)
     // console.log('HELLO FROM THUNK')
     dispatch(createSingleMedia(data))
   } catch (err) {
@@ -138,8 +135,6 @@ export const createSingleCloudMediaThunk = obj => async dispatch => {
   // console.log('obj from content.js', obj)
   try {
     const {data} = await axios.post('/api/media/cloudinary', obj)
-    console.log('D*****ATA', data)
-    // console.log('HELLO FROM THUNK')
     dispatch(createSingleMedia(data))
   } catch (err) {
     console.log(err)
@@ -156,7 +151,6 @@ export const updateSingleMediaThunk = (id, updatedProp) => async dispatch => {
 
 export const getSingleMediaThunk = id => async dispatch => {
   try {
-    console.log('Id in get single media thunk', id)
     const {data} = await axios.post(`/api/media/${id}`)
     dispatch(getSingleMedia(data))
   } catch (err) {
