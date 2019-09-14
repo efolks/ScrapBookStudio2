@@ -1545,6 +1545,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1556,41 +1558,41 @@ function (_Component) {
   _inherits(MediaUpload, _Component);
 
   function MediaUpload() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, MediaUpload);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MediaUpload).call(this));
-    _this.uploadMedia = _this.uploadMedia.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-  _createClass(MediaUpload, [{
-    key: "uploadMedia",
-    value: function uploadMedia() {
-      var _this2 = this;
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(MediaUpload)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_this), "uploadMedia", function () {
       var myWidget = cloudinary.createUploadWidget({
-        cloudName: _config_cloudinary__WEBPACK_IMPORTED_MODULE_2__["cloud_name"],
-        api_key: _config_cloudinary__WEBPACK_IMPORTED_MODULE_2__["api_key"],
-        uploadPreset: _config_cloudinary__WEBPACK_IMPORTED_MODULE_2__["upload_preset"]
+        cloudName: _config_cloudinary__WEBPACK_IMPORTED_MODULE_2__["cloudName"],
+        apiKey: _config_cloudinary__WEBPACK_IMPORTED_MODULE_2__["apiKey"],
+        uploadPreset: _config_cloudinary__WEBPACK_IMPORTED_MODULE_2__["uploadPreset"]
       }, function (error, result) {
         if (!error && result && result.event === "success") {
-          console.log('Done! Here is the image info: ', result.info);
-          console.log('CLICK HERE:', result.info.secure_url);
           var path = result.info.secure_url;
-          console.log("****CLOUD RESULT", path);
 
-          _this2.props.postMedia({
+          _this.props.postMedia({
             path: path,
-            scrapbookId: _this2.props.currentScrapbook,
-            pageId: _this2.props.singlePage
+            scrapbookId: _this.props.currentScrapbook,
+            pageId: _this.props.singlePage
           });
         }
       });
       myWidget.open();
-    }
-  }, {
+    });
+
+    return _this;
+  }
+
+  _createClass(MediaUpload, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -2632,21 +2634,23 @@ var Toolbar =
 function (_Component) {
   _inherits(Toolbar, _Component);
 
-  function Toolbar() {
+  function Toolbar(props) {
     var _this;
 
     _classCallCheck(this, Toolbar);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Toolbar).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Toolbar).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "handleClick", function () {
-      return _this.setState({
-        revealMediaPool: !_this.state.revealMediaPool
+      _this.setState(function (prevState) {
+        return {
+          isMediaPoolDisplayed: !prevState.isMediaPoolDisplayed
+        };
       });
     });
 
     _this.state = {
-      revealMediaPool: false
+      isMediaPoolDisplayed: false
     };
     return _this;
   }
@@ -2654,15 +2658,15 @@ function (_Component) {
   _createClass(Toolbar, [{
     key: "render",
     value: function render() {
-      // console.log('TOOLBAR SCRAPBOOK ID:', this.props.match.params.scrapbookid)
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "box toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "title"
-      }, "Toolbar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MediaUpload__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TextEditor__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Toolbar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MediaUpload__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TextEditor__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
         className: "button is-primary space space-button",
         onClick: this.handleClick
-      }, "Media Pool"), this.state.revealMediaPool ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MediaPool__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, "Media Pool"), this.state.isMediaPoolDisplayed ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MediaPool__WEBPACK_IMPORTED_MODULE_3__["default"], {
         scrapbookId: this.props.scrapbookId
       }) : null);
     }
@@ -3101,9 +3105,9 @@ AuthForm.propTypes = {
 /***/ (function(module, exports) {
 
 module.exports = {
-  cloud_name: 'deztlskra',
-  upload_preset: 'ml_default',
-  api_key: '349653249863281'
+  cloudName: 'deztlskra',
+  uploadPreset: 'ml_default',
+  apiKey: '349653249863281'
 };
 
 /***/ }),
