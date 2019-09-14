@@ -3831,23 +3831,21 @@ var createSingleMediaThunk = function createSingleMediaThunk(obj) {
               case 3:
                 _ref9 = _context5.sent;
                 data = _ref9.data;
-                console.log('D*****ATA', data); // console.log('HELLO FROM THUNK')
-
                 dispatch(createSingleMedia(data));
-                _context5.next = 12;
+                _context5.next = 11;
                 break;
 
-              case 9:
-                _context5.prev = 9;
+              case 8:
+                _context5.prev = 8;
                 _context5.t0 = _context5["catch"](0);
                 console.log(_context5.t0);
 
-              case 12:
+              case 11:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 9]]);
+        }, _callee5, null, [[0, 8]]);
       }));
 
       return function (_x5) {
@@ -3876,23 +3874,21 @@ var createSingleCloudMediaThunk = function createSingleCloudMediaThunk(obj) {
               case 3:
                 _ref11 = _context6.sent;
                 data = _ref11.data;
-                console.log('D*****ATA', data); // console.log('HELLO FROM THUNK')
-
                 dispatch(createSingleMedia(data));
-                _context6.next = 12;
+                _context6.next = 11;
                 break;
 
-              case 9:
-                _context6.prev = 9;
+              case 8:
+                _context6.prev = 8;
                 _context6.t0 = _context6["catch"](0);
                 console.log(_context6.t0);
 
-              case 12:
+              case 11:
               case "end":
                 return _context6.stop();
             }
           }
-        }, _callee6, null, [[0, 9]]);
+        }, _callee6, null, [[0, 8]]);
       }));
 
       return function (_x6) {

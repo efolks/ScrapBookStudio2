@@ -123,11 +123,8 @@ export const deleteSingleTextThunk = id => async dispatch => {
 }
 
 export const createSingleMediaThunk = obj => async dispatch => {
-  // console.log('obj from content.js', obj)
   try {
     const {data} = await axios.post('/api/media', obj)
-    console.log('D*****ATA', data)
-    // console.log('HELLO FROM THUNK')
     dispatch(createSingleMedia(data))
   } catch (err) {
     console.log(err)
@@ -135,11 +132,8 @@ export const createSingleMediaThunk = obj => async dispatch => {
 }
 
 export const createSingleCloudMediaThunk = obj => async dispatch => {
-  // console.log('obj from content.js', obj)
   try {
     const {data} = await axios.post('/api/media/cloudinary', obj)
-    console.log('D*****ATA', data)
-    // console.log('HELLO FROM THUNK')
     dispatch(createSingleMedia(data))
   } catch (err) {
     console.log(err)
