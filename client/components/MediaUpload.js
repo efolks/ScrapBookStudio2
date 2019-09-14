@@ -12,7 +12,7 @@ class MediaUpload extends Component {
             uploadPreset: uploadPreset}, (error, result) => {
               if (!error && result && result.event === "success") {
                 let path = result.info.secure_url
-                this.props.postMedia({path: path, scrapbookId: this.props.currentScrapbook, pageId: this.props.singlePage })
+                this.props.postMedia({path: path, scrapbookId: this.props.currentScrapbook, pageId: this.props.currentPage })
               }
             }
           )
@@ -31,7 +31,7 @@ class MediaUpload extends Component {
 const mapState = state => {
     return {
         currentScrapbook: state.scrapbooks.currentScrapbook,
-        singlePage: state.scrapbooks.singlePage
+        currentPage: state.scrapbooks.currentPage
   }
 }
 

@@ -17,7 +17,7 @@ class ViewOrEdit extends Component {
         <br />
         <Link
           to={`/staticcanvas/${this.props.match.params.id}/${
-            this.props.singlePage
+            this.props.currentPage
           }`}
         >
           <button className="button is-primary space-button" type="submit">
@@ -25,7 +25,7 @@ class ViewOrEdit extends Component {
           </button>
         </Link>
         <Link
-          to={`/canvas/${this.props.match.params.id}/${this.props.singlePage}`}
+          to={`/canvas/${this.props.match.params.id}/${this.props.currentPage}`}
         >
           <button className="button is-primary space-button" type="submit">
             Edit My Scrapbook
@@ -40,7 +40,7 @@ const mapStateToProps = state => {
   return {
     pages: state.scrapbooks.pages,
     user: state.user.user,
-    singlePage: state.scrapbooks.singlePage
+    currentPage: state.scrapbooks.currentPage
   }
 }
 

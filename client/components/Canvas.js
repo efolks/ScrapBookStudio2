@@ -7,13 +7,13 @@ import {Link} from 'react-router-dom'
 import CanvasMedia from './CanvasMedia'
 import CanvasText from './CanvasText'
 import {
-  createSinglePageThunk,
+  createCurrentPageThunk,
   setNextAndPrevious,
   getAllPagesThunk,
   increasePageIndex,
   decreasePageIndex,
   setPageIndex,
-  getSinglePage,
+  getCurrentPage,
   getCurrentScrapbook
 } from '../store/scrapbooks'
 import MediaResizer from './MediaResizer'
@@ -35,7 +35,7 @@ class Canvas extends Component {
     await this.props.getPageContent(this.props.match.params.pageid)
     await this.props.setPageIndex(this.props.match.params.pageid)
     await this.props.setCurrentScrapbook(this.props.match.params.scrapbookid)
-    this.props.setSinglePage(this.props.match.params.pageid)
+    this.props.setCurrentPage(this.props.match.params.pageid)
     this.props.setNextAndPrevious()
   }
 
@@ -88,7 +88,7 @@ class Canvas extends Component {
   }
 
   handleOnMouseOver(){
-    this.props.setSinglePage(this.props.match.params.pageid)
+    this.props.setCurrentPage(this.props.match.params.pageid)
   }
 
   render() {
@@ -208,7 +208,7 @@ const mapState = state => {
     allText: state.content.allText,
     allMedia: state.content.allMedia,
     editorText: state.content.editorText,
-    singlePage: state.scrapbooks.singlePage,
+    currentPage: state.scrapbooks.currentPage,
     nextPage: state.scrapbooks.nextPage,
     previousPage: state.scrapbooks.previousPage,
     currentPageIndex: state.scrapbooks.currentPageIndex,
@@ -219,14 +219,14 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getPageContent: pageId => dispatch(getPageContentThunk(pageId)),
-    addPage: scrapbookId => dispatch(createSinglePageThunk(scrapbookId)),
+    addPage: scrapbookId => dispatch(createCurrentPageThunk(scrapbookId)),
     deselectCanvasElement: () => dispatch(deselectCanvasElement()),
     setNextAndPrevious: () => dispatch(setNextAndPrevious()),
     getAllPages: id => dispatch(getAllPagesThunk(id)),
     increasePageIndex: () => dispatch(increasePageIndex()),
     decreasePageIndex: () => dispatch(decreasePageIndex()),
     setPageIndex: pageId => dispatch(setPageIndex(pageId)),
-    setSinglePage: pageId => dispatch(getSinglePage(pageId)),
+    setCurrentPage: pageId => dispatch(getCurrentPage(pageId)),
     setCurrentScrapbook: scrapbookId => dispatch(getCurrentScrapbook(scrapbookId))
   }
 }

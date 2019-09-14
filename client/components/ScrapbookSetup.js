@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { createSinglePageThunk } from '../store/scrapbooks'
+import { createCurrentPageThunk } from '../store/scrapbooks'
 
 class ScrapbookSetup extends Component {
     constructor() {
@@ -32,7 +32,7 @@ class ScrapbookSetup extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addPage: () => dispatch(createSinglePageThunk())
+    addPage: () => dispatch(createCurrentPageThunk())
 })
 
 export default connect(null, mapDispatchToProps)(ScrapbookSetup)

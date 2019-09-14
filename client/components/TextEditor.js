@@ -101,7 +101,7 @@ class TextEditor extends Component {
 const mapState = state => {
   return {
     selectedText: state.content.selectedText,
-    currentPage: state.scrapbooks.singlePage
+    currentPage: state.scrapbooks.currentPage
   }
 }
 

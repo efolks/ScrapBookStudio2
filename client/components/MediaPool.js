@@ -23,7 +23,7 @@ class MediaPool extends Component {
         {
           this.props.allMedia.map(media => {
             return (
-              <MediaPoolItem id={media.id} path={media.path} scrapbookId={this.props.currentScrapbook} pageId={this.props.singlePage} />
+              <MediaPoolItem id={media.id} path={media.path} scrapbookId={this.props.currentScrapbook} pageId={this.props.currentPage} />
             )
             // return (
             //   <div key={media.id}>
@@ -43,7 +43,7 @@ const mapState = state => {
     return {
         allMedia: state.scrapbooks.allScrapbookMedia,
         currentScrapbook: state.scrapbooks.currentScrapbook,
-        singlePage: state.scrapbooks.singlePage
+        currentPage: state.scrapbooks.currentPage
   }
 }
 

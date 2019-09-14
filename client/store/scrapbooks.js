@@ -4,7 +4,7 @@ import axios from 'axios'
  * ACTION TYPES
  */
 const GET_ALL_SCRAPBOOKS = 'GET_ALL_SCRAPBOOKS'
-const GET_SINGLE_SCRAPBOOK = 'GET_SINGLE_SCRAPBOOK'
+const GET_CURRENT_SCRAPBOOK = 'GET_CURRENT_SCRAPBOOK'
 const CREATE_SCRAPBOOK = 'CREATE_SCRAPBOOK'
 const UPDATE_SCRAPBOOK = 'UPDATE_SCRAPBOOK'
 const DELETE_SCRAPBOOK = 'DELETE_SCRAPBOOK'
@@ -29,7 +29,7 @@ const getAllScrapbooks = (scrapbooks) => ({
 })
 
 export const getcurrentScrapbook = (id) => ({
-    type: GET_SINGLE_SCRAPBOOK,
+    type: GET_CURRENT_SCRAPBOOK,
     id
 })
 
@@ -54,17 +54,17 @@ const getAllPages = (pages) => ({
     pages
 })
 
-export const getSinglePage = (id) => ({
+export const getcurrentPage = (id) => ({
     type: GET_SINGLE_PAGE,
     id
 })
 
-const createSinglePage = (page) => ({
+const createcurrentPage = (page) => ({
   type: CREATE_SINGLE_PAGE,
   page
 })
 
-const deleteSinglePage = (id) => ({
+const deletecurrentPage = (id) => ({
     type: DELETE_SINGLE_PAGE,
     id
 })
@@ -132,17 +132,17 @@ export const getAllPagesThunk = (scrapbookId) => async dispatch => {
     } catch(err) {console.error(err)}
 }
 
-export const createSinglePageThunk = (scrapbookid) => async dispatch => {
+export const createcurrentPageThunk = (scrapbookid) => async dispatch => {
   try {
       const {data} = await axios.post(`/api/pages/${scrapbookid}`)
-      dispatch(createSinglePage(data))
+      dispatch(createcurrentPage(data))
   } catch(err) {console.error(err)}
 }
 
-export const deleteSinglePageThunk = (id) => async dispatch => {
+export const deletecurrentPageThunk = (id) => async dispatch => {
     try {
         await axios.delete(`/api/pages/${id}`)
-        dispatch(deleteSinglePage(id))
+        dispatch(deletecurrentPage(id))
     } catch(err) {console.error(err)}
 }
 
@@ -162,7 +162,7 @@ const initialState = {
     scrapbooks: [],
     currentScrapbook: '',
     pages: [],
-    singlePage: '',
+    currentPage: '',
     allScrapbookMedia: [],
     currentPageIndex: 0,
     nextPage: '',
@@ -180,7 +180,7 @@ const initialState = {
         case GET_ALL_SCRAPBOOKS:
             newState.scrapbooks = action.scrapbooks
             return newState
-        case GET_SINGLE_SCRAPBOOK:
+        case GET_CURRENT_SCRAPBOOK:
             newState.currentScrapbook = action.id
             return newState
         case CREATE_SCRAPBOOK:
@@ -197,19 +197,19 @@ const initialState = {
             return newState
         case GET_ALL_PAGES:
             newState.pages = action.pages
-            newState.singlePage = action.pages[0].id
+            newState.currentPage = action.pages[0].id
             return newState
         case GET_SINGLE_PAGE:
-            newState.singlePage = action.id
+            newState.currentPage = action.id
             return newState
         case CREATE_SINGLE_PAGE:
               newState.pages = [newState.pages, action.page]
-              newState.singlePage = action.page.id
+              newState.currentPage = action.page.id
               return newState
         case DELETE_SINGLE_PAGE:
              newState.pages = newState.pages.filter(page =>
              page.id !== action.id)
-             newState.singlePage = ''
+             newState.currentPage = ''
              return newState
         case GET_ALL_SCRAPBOOK_MEDIA:
             newState.allScrapbookMedia = action.media

@@ -333,7 +333,7 @@ function (_Component) {
                 return this.props.setCurrentScrapbook(this.props.match.params.scrapbookid);
 
               case 8:
-                this.props.setSinglePage(this.props.match.params.pageid);
+                this.props.setCurrentPage(this.props.match.params.pageid);
                 this.props.setNextAndPrevious();
 
               case 10:
@@ -434,7 +434,7 @@ function (_Component) {
   }, {
     key: "handleOnMouseOver",
     value: function handleOnMouseOver() {
-      this.props.setSinglePage(this.props.match.params.pageid);
+      this.props.setCurrentPage(this.props.match.params.pageid);
     }
   }, {
     key: "render",
@@ -524,7 +524,7 @@ var mapState = function mapState(state) {
     allText: state.content.allText,
     allMedia: state.content.allMedia,
     editorText: state.content.editorText,
-    singlePage: state.scrapbooks.singlePage,
+    currentPage: state.scrapbooks.currentPage,
     nextPage: state.scrapbooks.nextPage,
     previousPage: state.scrapbooks.previousPage,
     currentPageIndex: state.scrapbooks.currentPageIndex,
@@ -538,7 +538,7 @@ var mapDispatch = function mapDispatch(dispatch) {
       return dispatch(Object(_store_content__WEBPACK_IMPORTED_MODULE_3__["getPageContentThunk"])(pageId));
     },
     addPage: function addPage(scrapbookId) {
-      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_8__["createSinglePageThunk"])(scrapbookId));
+      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_8__["createCurrentPageThunk"])(scrapbookId));
     },
     deselectCanvasElement: function deselectCanvasElement() {
       return dispatch(Object(_store_content__WEBPACK_IMPORTED_MODULE_3__["deselectCanvasElement"])());
@@ -558,8 +558,8 @@ var mapDispatch = function mapDispatch(dispatch) {
     setPageIndex: function setPageIndex(pageId) {
       return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_8__["setPageIndex"])(pageId));
     },
-    setSinglePage: function setSinglePage(pageId) {
-      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_8__["getSinglePage"])(pageId));
+    setCurrentPage: function setCurrentPage(pageId) {
+      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_8__["getCurrentPage"])(pageId));
     },
     setCurrentScrapbook: function setCurrentScrapbook(scrapbookId) {
       return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_8__["getCurrentScrapbook"])(scrapbookId));
@@ -1291,7 +1291,7 @@ function (_Component) {
           id: media.id,
           path: media.path,
           scrapbookId: _this.props.currentScrapbook,
-          pageId: _this.props.singlePage
+          pageId: _this.props.currentPage
         }); // return (
         //   <div key={media.id}>
         //     <br />
@@ -1310,7 +1310,7 @@ var mapState = function mapState(state) {
   return {
     allMedia: state.scrapbooks.allScrapbookMedia,
     currentScrapbook: state.scrapbooks.currentScrapbook,
-    singlePage: state.scrapbooks.singlePage
+    currentPage: state.scrapbooks.currentPage
   };
 };
 
@@ -1582,7 +1582,7 @@ function (_Component) {
           _this.props.postMedia({
             path: path,
             scrapbookId: _this.props.currentScrapbook,
-            pageId: _this.props.singlePage
+            pageId: _this.props.currentPage
           });
         }
       });
@@ -1609,7 +1609,7 @@ function (_Component) {
 var mapState = function mapState(state) {
   return {
     currentScrapbook: state.scrapbooks.currentScrapbook,
-    singlePage: state.scrapbooks.singlePage
+    currentPage: state.scrapbooks.currentPage
   };
 };
 
@@ -1753,7 +1753,7 @@ function (_Component) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     addPage: function addPage() {
-      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_3__["createSinglePageThunk"])());
+      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_3__["createCurrentPageThunk"])());
     }
   };
 };
@@ -1856,7 +1856,7 @@ function (_Component) {
                 return this.props.setCurrentScrapbook(this.props.match.params.scrapbookid);
 
               case 8:
-                this.props.setSinglePage(this.props.match.params.pageid);
+                this.props.setCurrentPage(this.props.match.params.pageid);
                 this.props.setNextAndPrevious();
 
               case 10:
@@ -2024,7 +2024,7 @@ var mapState = function mapState(state) {
     allText: state.content.allText,
     allMedia: state.content.allMedia,
     editorText: state.content.editorText,
-    singlePage: state.scrapbooks.singlePage,
+    currentPage: state.scrapbooks.currentPage,
     nextPage: state.scrapbooks.nextPage,
     previousPage: state.scrapbooks.previousPage,
     currentPageIndex: state.scrapbooks.currentPageIndex,
@@ -2038,7 +2038,7 @@ var mapDispatch = function mapDispatch(dispatch) {
       return dispatch(Object(_store_content__WEBPACK_IMPORTED_MODULE_2__["getPageContentThunk"])(pageId));
     },
     addPage: function addPage(scrapbookId) {
-      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__["createSinglePageThunk"])(scrapbookId));
+      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__["createCurrentPageThunk"])(scrapbookId));
     },
     deselectCanvasElement: function deselectCanvasElement() {
       return dispatch(Object(_store_content__WEBPACK_IMPORTED_MODULE_2__["deselectCanvasElement"])());
@@ -2058,8 +2058,8 @@ var mapDispatch = function mapDispatch(dispatch) {
     setPageIndex: function setPageIndex(pageId) {
       return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__["setPageIndex"])(pageId));
     },
-    setSinglePage: function setSinglePage(pageId) {
-      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__["getSinglePage"])(pageId));
+    setCurrentPage: function setCurrentPage(pageId) {
+      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__["getCurrentPage"])(pageId));
     },
     setCurrentScrapbook: function setCurrentScrapbook(scrapbookId) {
       return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__["getCurrentScrapbook"])(scrapbookId));
@@ -2559,7 +2559,7 @@ function (_Component) {
 var mapState = function mapState(state) {
   return {
     selectedText: state.content.selectedText,
-    currentPage: state.scrapbooks.singlePage
+    currentPage: state.scrapbooks.currentPage
   };
 };
 
@@ -2879,12 +2879,12 @@ function (_Component) {
       }, "Hey There!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "subtitle"
       }, "What would you like to do?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/staticcanvas/".concat(this.props.match.params.id, "/").concat(this.props.singlePage)
+        to: "/staticcanvas/".concat(this.props.match.params.id, "/").concat(this.props.currentPage)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "button is-primary space-button",
         type: "submit"
       }, "View My Scrapbook")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/canvas/".concat(this.props.match.params.id, "/").concat(this.props.singlePage)
+        to: "/canvas/".concat(this.props.match.params.id, "/").concat(this.props.currentPage)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "button is-primary space-button",
         type: "submit"
@@ -2899,7 +2899,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     pages: state.scrapbooks.pages,
     user: state.user.user,
-    singlePage: state.scrapbooks.singlePage
+    currentPage: state.scrapbooks.currentPage
   };
 };
 
@@ -4332,7 +4332,7 @@ var initialState = {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, me, auth, logout, getcurrentScrapbook, getSinglePage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createSinglePageThunk, deleteSinglePageThunk, getAllScrapbookMediaThunk, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk */
+/*! exports provided: default, me, auth, logout, getcurrentScrapbook, getcurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createcurrentPageThunk, deletecurrentPageThunk, getAllScrapbookMediaThunk, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4356,7 +4356,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getcurrentScrapbook", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getcurrentScrapbook"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getSinglePage", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getSinglePage"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getcurrentPage", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getcurrentPage"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setNextAndPrevious", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["setNextAndPrevious"]; });
 
@@ -4376,9 +4376,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getAllPagesThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getAllPagesThunk"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createSinglePageThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["createSinglePageThunk"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createcurrentPageThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["createcurrentPageThunk"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "deleteSinglePageThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["deleteSinglePageThunk"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "deletecurrentPageThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["deletecurrentPageThunk"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getAllScrapbookMediaThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getAllScrapbookMediaThunk"]; });
 
@@ -4447,13 +4447,13 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, m
 /*!************************************!*\
   !*** ./client/store/scrapbooks.js ***!
   \************************************/
-/*! exports provided: getcurrentScrapbook, getSinglePage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createSinglePageThunk, deleteSinglePageThunk, getAllScrapbookMediaThunk, default */
+/*! exports provided: getcurrentScrapbook, getcurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createcurrentPageThunk, deletecurrentPageThunk, getAllScrapbookMediaThunk, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getcurrentScrapbook", function() { return getcurrentScrapbook; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSinglePage", function() { return getSinglePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getcurrentPage", function() { return getcurrentPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setNextAndPrevious", function() { return setNextAndPrevious; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increasePageIndex", function() { return increasePageIndex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decreasePageIndex", function() { return decreasePageIndex; });
@@ -4463,8 +4463,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateScrapbookThunk", function() { return updateScrapbookThunk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteScrapbookThunk", function() { return deleteScrapbookThunk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllPagesThunk", function() { return getAllPagesThunk; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createSinglePageThunk", function() { return createSinglePageThunk; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteSinglePageThunk", function() { return deleteSinglePageThunk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createcurrentPageThunk", function() { return createcurrentPageThunk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletecurrentPageThunk", function() { return deletecurrentPageThunk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllScrapbookMediaThunk", function() { return getAllScrapbookMediaThunk; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -4490,7 +4490,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  */
 
 var GET_ALL_SCRAPBOOKS = 'GET_ALL_SCRAPBOOKS';
-var GET_SINGLE_SCRAPBOOK = 'GET_SINGLE_SCRAPBOOK';
+var GET_CURRENT_SCRAPBOOK = 'GET_CURRENT_SCRAPBOOK';
 var CREATE_SCRAPBOOK = 'CREATE_SCRAPBOOK';
 var UPDATE_SCRAPBOOK = 'UPDATE_SCRAPBOOK';
 var DELETE_SCRAPBOOK = 'DELETE_SCRAPBOOK';
@@ -4516,7 +4516,7 @@ var getAllScrapbooks = function getAllScrapbooks(scrapbooks) {
 
 var getcurrentScrapbook = function getcurrentScrapbook(id) {
   return {
-    type: GET_SINGLE_SCRAPBOOK,
+    type: GET_CURRENT_SCRAPBOOK,
     id: id
   };
 };
@@ -4549,21 +4549,21 @@ var getAllPages = function getAllPages(pages) {
   };
 };
 
-var getSinglePage = function getSinglePage(id) {
+var getcurrentPage = function getcurrentPage(id) {
   return {
     type: GET_SINGLE_PAGE,
     id: id
   };
 };
 
-var createSinglePage = function createSinglePage(page) {
+var createcurrentPage = function createcurrentPage(page) {
   return {
     type: CREATE_SINGLE_PAGE,
     page: page
   };
 };
 
-var deleteSinglePage = function deleteSinglePage(id) {
+var deletecurrentPage = function deletecurrentPage(id) {
   return {
     type: DELETE_SINGLE_PAGE,
     id: id
@@ -4814,7 +4814,7 @@ var getAllPagesThunk = function getAllPagesThunk(scrapbookId) {
     }()
   );
 };
-var createSinglePageThunk = function createSinglePageThunk(scrapbookid) {
+var createcurrentPageThunk = function createcurrentPageThunk(scrapbookid) {
   return (
     /*#__PURE__*/
     function () {
@@ -4834,7 +4834,7 @@ var createSinglePageThunk = function createSinglePageThunk(scrapbookid) {
               case 3:
                 _ref11 = _context6.sent;
                 data = _ref11.data;
-                dispatch(createSinglePage(data));
+                dispatch(createcurrentPage(data));
                 _context6.next = 11;
                 break;
 
@@ -4857,7 +4857,7 @@ var createSinglePageThunk = function createSinglePageThunk(scrapbookid) {
     }()
   );
 };
-var deleteSinglePageThunk = function deleteSinglePageThunk(id) {
+var deletecurrentPageThunk = function deletecurrentPageThunk(id) {
   return (
     /*#__PURE__*/
     function () {
@@ -4873,7 +4873,7 @@ var deleteSinglePageThunk = function deleteSinglePageThunk(id) {
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/pages/".concat(id));
 
               case 3:
-                dispatch(deleteSinglePage(id));
+                dispatch(deletecurrentPage(id));
                 _context7.next = 9;
                 break;
 
@@ -4949,7 +4949,7 @@ var initialState = {
   scrapbooks: [],
   currentScrapbook: '',
   pages: [],
-  singlePage: '',
+  currentPage: '',
   allScrapbookMedia: [],
   currentPageIndex: 0,
   nextPage: '',
@@ -4971,7 +4971,7 @@ var initialState = {
       newState.scrapbooks = action.scrapbooks;
       return newState;
 
-    case GET_SINGLE_SCRAPBOOK:
+    case GET_CURRENT_SCRAPBOOK:
       newState.currentScrapbook = action.id;
       return newState;
 
@@ -4993,23 +4993,23 @@ var initialState = {
 
     case GET_ALL_PAGES:
       newState.pages = action.pages;
-      newState.singlePage = action.pages[0].id;
+      newState.currentPage = action.pages[0].id;
       return newState;
 
     case GET_SINGLE_PAGE:
-      newState.singlePage = action.id;
+      newState.currentPage = action.id;
       return newState;
 
     case CREATE_SINGLE_PAGE:
       newState.pages = [newState.pages, action.page];
-      newState.singlePage = action.page.id;
+      newState.currentPage = action.page.id;
       return newState;
 
     case DELETE_SINGLE_PAGE:
       newState.pages = newState.pages.filter(function (page) {
         return page.id !== action.id;
       });
-      newState.singlePage = '';
+      newState.currentPage = '';
       return newState;
 
     case GET_ALL_SCRAPBOOK_MEDIA:
