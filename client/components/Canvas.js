@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Stage, Layer, Text, Rect} from 'react-konva'
+import {Stage, Layer} from 'react-konva'
 import Toolbar from './Toolbar'
 import {getPageContentThunk, deselectCanvasElement} from '../store/content'
 import {connect, ReactReduxContext, Provider} from 'react-redux'
