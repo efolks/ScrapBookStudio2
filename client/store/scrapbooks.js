@@ -28,7 +28,7 @@ const getAllScrapbooks = (scrapbooks) => ({
     scrapbooks
 })
 
-export const getSingleScrapbook = (id) => ({
+export const getcurrentScrapbook = (id) => ({
     type: GET_SINGLE_SCRAPBOOK,
     id
 })
@@ -160,7 +160,7 @@ export const getAllScrapbookMediaThunk = (scrapbookId) => async dispatch => {
  */
 const initialState = {
     scrapbooks: [],
-    singleScrapbook: '',
+    currentScrapbook: '',
     pages: [],
     singlePage: '',
     allScrapbookMedia: [],
@@ -181,11 +181,11 @@ const initialState = {
             newState.scrapbooks = action.scrapbooks
             return newState
         case GET_SINGLE_SCRAPBOOK:
-            newState.singleScrapbook = action.id
+            newState.currentScrapbook = action.id
             return newState
         case CREATE_SCRAPBOOK:
             newState.scrapbooks = [newState.scrapbooks, action.scrapbook]
-            newState.singleScrapbook = action.scrapbook.id
+            newState.currentScrapbook = action.scrapbook.id
             return newState
         case UPDATE_SCRAPBOOK:
             newState.scrapbooks = [newState.scrapbooks, ...action.scrapbook]
@@ -193,7 +193,7 @@ const initialState = {
         case DELETE_SCRAPBOOK:
             newState.scrapbooks = newState.scrapbooks.filter(scrapbook =>
             scrapbook.id !== action.id)
-            newState.singleScrapbook = ''
+            newState.currentScrapbook = ''
             return newState
         case GET_ALL_PAGES:
             newState.pages = action.pages

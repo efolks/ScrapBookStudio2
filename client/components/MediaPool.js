@@ -42,7 +42,7 @@ class MediaPool extends Component {
 const mapState = state => {
     return {
         allMedia: state.scrapbooks.allScrapbookMedia,
-        currentScrapbook: state.scrapbooks.singleScrapbook,
+        currentScrapbook: state.scrapbooks.currentScrapbook,
         singlePage: state.scrapbooks.singlePage
   }
 }

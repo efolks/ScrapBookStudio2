@@ -330,7 +330,7 @@ function (_Component) {
 
               case 6:
                 _context.next = 8;
-                return this.props.setSingleScrapbook(this.props.match.params.scrapbookid);
+                return this.props.setCurrentScrapbook(this.props.match.params.scrapbookid);
 
               case 8:
                 this.props.setSinglePage(this.props.match.params.pageid);
@@ -561,8 +561,8 @@ var mapDispatch = function mapDispatch(dispatch) {
     setSinglePage: function setSinglePage(pageId) {
       return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_8__["getSinglePage"])(pageId));
     },
-    setSingleScrapbook: function setSingleScrapbook(scrapbookId) {
-      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_8__["getSingleScrapbook"])(scrapbookId));
+    setCurrentScrapbook: function setCurrentScrapbook(scrapbookId) {
+      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_8__["getCurrentScrapbook"])(scrapbookId));
     }
   };
 };
@@ -1309,7 +1309,7 @@ function (_Component) {
 var mapState = function mapState(state) {
   return {
     allMedia: state.scrapbooks.allScrapbookMedia,
-    currentScrapbook: state.scrapbooks.singleScrapbook,
+    currentScrapbook: state.scrapbooks.currentScrapbook,
     singlePage: state.scrapbooks.singlePage
   };
 };
@@ -1608,7 +1608,7 @@ function (_Component) {
 
 var mapState = function mapState(state) {
   return {
-    currentScrapbook: state.scrapbooks.singleScrapbook,
+    currentScrapbook: state.scrapbooks.currentScrapbook,
     singlePage: state.scrapbooks.singlePage
   };
 };
@@ -1853,7 +1853,7 @@ function (_Component) {
 
               case 6:
                 _context.next = 8;
-                return this.props.setSingleScrapbook(this.props.match.params.scrapbookid);
+                return this.props.setCurrentScrapbook(this.props.match.params.scrapbookid);
 
               case 8:
                 this.props.setSinglePage(this.props.match.params.pageid);
@@ -2061,8 +2061,8 @@ var mapDispatch = function mapDispatch(dispatch) {
     setSinglePage: function setSinglePage(pageId) {
       return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__["getSinglePage"])(pageId));
     },
-    setSingleScrapbook: function setSingleScrapbook(scrapbookId) {
-      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__["getSingleScrapbook"])(scrapbookId));
+    setCurrentScrapbook: function setCurrentScrapbook(scrapbookId) {
+      return dispatch(Object(_store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__["getCurrentScrapbook"])(scrapbookId));
     }
   };
 };
@@ -4332,7 +4332,7 @@ var initialState = {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, me, auth, logout, getSingleScrapbook, getSinglePage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createSinglePageThunk, deleteSinglePageThunk, getAllScrapbookMediaThunk, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk */
+/*! exports provided: default, me, auth, logout, getcurrentScrapbook, getSinglePage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createSinglePageThunk, deleteSinglePageThunk, getAllScrapbookMediaThunk, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4354,7 +4354,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return _user__WEBPACK_IMPORTED_MODULE_4__["logout"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getSingleScrapbook", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getSingleScrapbook"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getcurrentScrapbook", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getcurrentScrapbook"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getSinglePage", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getSinglePage"]; });
 
@@ -4447,12 +4447,12 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, m
 /*!************************************!*\
   !*** ./client/store/scrapbooks.js ***!
   \************************************/
-/*! exports provided: getSingleScrapbook, getSinglePage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createSinglePageThunk, deleteSinglePageThunk, getAllScrapbookMediaThunk, default */
+/*! exports provided: getcurrentScrapbook, getSinglePage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createSinglePageThunk, deleteSinglePageThunk, getAllScrapbookMediaThunk, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSingleScrapbook", function() { return getSingleScrapbook; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getcurrentScrapbook", function() { return getcurrentScrapbook; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSinglePage", function() { return getSinglePage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setNextAndPrevious", function() { return setNextAndPrevious; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increasePageIndex", function() { return increasePageIndex; });
@@ -4514,7 +4514,7 @@ var getAllScrapbooks = function getAllScrapbooks(scrapbooks) {
   };
 };
 
-var getSingleScrapbook = function getSingleScrapbook(id) {
+var getcurrentScrapbook = function getcurrentScrapbook(id) {
   return {
     type: GET_SINGLE_SCRAPBOOK,
     id: id
@@ -4947,7 +4947,7 @@ var getAllScrapbookMediaThunk = function getAllScrapbookMediaThunk(scrapbookId) 
 
 var initialState = {
   scrapbooks: [],
-  singleScrapbook: '',
+  currentScrapbook: '',
   pages: [],
   singlePage: '',
   allScrapbookMedia: [],
@@ -4972,12 +4972,12 @@ var initialState = {
       return newState;
 
     case GET_SINGLE_SCRAPBOOK:
-      newState.singleScrapbook = action.id;
+      newState.currentScrapbook = action.id;
       return newState;
 
     case CREATE_SCRAPBOOK:
       newState.scrapbooks = [newState.scrapbooks, action.scrapbook];
-      newState.singleScrapbook = action.scrapbook.id;
+      newState.currentScrapbook = action.scrapbook.id;
       return newState;
 
     case UPDATE_SCRAPBOOK:
@@ -4988,7 +4988,7 @@ var initialState = {
       newState.scrapbooks = newState.scrapbooks.filter(function (scrapbook) {
         return scrapbook.id !== action.id;
       });
-      newState.singleScrapbook = '';
+      newState.currentScrapbook = '';
       return newState;
 
     case GET_ALL_PAGES:

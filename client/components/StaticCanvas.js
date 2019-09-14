@@ -13,7 +13,7 @@ import {
   decreasePageIndex,
   setPageIndex,
   getSinglePage,
-  getSingleScrapbook
+  getCurrentScrapbook
 } from '../store/scrapbooks'
 import MediaResizer from './MediaResizer'
 
@@ -28,7 +28,7 @@ class StaticCanvas extends Component {
     await this.props.getAllPages(this.props.match.params.scrapbookid)
     await this.props.getPageContent(this.props.match.params.pageid)
     await this.props.setPageIndex(this.props.match.params.pageid)
-    await this.props.setSingleScrapbook(this.props.match.params.scrapbookid)
+    await this.props.setCurrentScrapbook(this.props.match.params.scrapbookid)
     this.props.setSinglePage(this.props.match.params.pageid)
     this.props.setNextAndPrevious()
   }
@@ -165,7 +165,7 @@ const mapDispatch = dispatch => {
     decreasePageIndex: () => dispatch(decreasePageIndex()),
     setPageIndex: pageId => dispatch(setPageIndex(pageId)),
     setSinglePage: pageId => dispatch(getSinglePage(pageId)),
-    setSingleScrapbook: scrapbookId => dispatch(getSingleScrapbook(scrapbookId))
+    setCurrentScrapbook: scrapbookId => dispatch(getCurrentScrapbook(scrapbookId))
   }
 }
 

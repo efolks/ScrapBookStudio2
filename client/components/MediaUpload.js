@@ -30,7 +30,7 @@ class MediaUpload extends Component {
 
 const mapState = state => {
     return {
-        currentScrapbook: state.scrapbooks.singleScrapbook,
+        currentScrapbook: state.scrapbooks.currentScrapbook,
         singlePage: state.scrapbooks.singlePage
   }
 }
