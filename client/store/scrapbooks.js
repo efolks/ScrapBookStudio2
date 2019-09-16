@@ -28,7 +28,7 @@ const getAllScrapbooks = (scrapbooks) => ({
     scrapbooks
 })
 
-export const getcurrentScrapbook = (id) => ({
+export const getCurrentScrapbook = (id) => ({
     type: GET_CURRENT_SCRAPBOOK,
     id
 })
@@ -54,17 +54,17 @@ const getAllPages = (pages) => ({
     pages
 })
 
-export const getcurrentPage = (id) => ({
+export const getCurrentPage = (id) => ({
     type: GET_SINGLE_PAGE,
     id
 })
 
-const createcurrentPage = (page) => ({
+const createCurrentPage = (page) => ({
   type: CREATE_SINGLE_PAGE,
   page
 })
 
-const deletecurrentPage = (id) => ({
+const deleteCurrentPage = (id) => ({
     type: DELETE_SINGLE_PAGE,
     id
 })
@@ -125,24 +125,23 @@ export const deleteScrapbookThunk = id => async dispatch => {
 
 
 export const getAllPagesThunk = (scrapbookId) => async dispatch => {
-    try {
-        const {data} = await axios.get(`/api/scrapbooks/${scrapbookId}/pages`)
-        // console.log('pages', data)
-        dispatch(getAllPages(data))
-    } catch(err) {console.error(err)}
-}
-
-export const createcurrentPageThunk = (scrapbookid) => async dispatch => {
   try {
-      const {data} = await axios.post(`/api/pages/${scrapbookid}`)
-      dispatch(createcurrentPage(data))
+      const {data} = await axios.get(`/api/scrapbooks/${scrapbookId}/pages`)
+      dispatch(getAllPages(data))
   } catch(err) {console.error(err)}
 }
 
-export const deletecurrentPageThunk = (id) => async dispatch => {
+export const createCurrentPageThunk = (scrapbookid) => async dispatch => {
+  try {
+      const {data} = await axios.post(`/api/pages/${scrapbookid}`)
+      dispatch(createCurrentPage(data))
+  } catch(err) {console.error(err)}
+}
+
+export const deleteCurrentPageThunk = (id) => async dispatch => {
     try {
         await axios.delete(`/api/pages/${id}`)
-        dispatch(deletecurrentPage(id))
+        dispatch(deleteCurrentPage(id))
     } catch(err) {console.error(err)}
 }
 

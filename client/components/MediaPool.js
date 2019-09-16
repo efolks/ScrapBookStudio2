@@ -23,7 +23,7 @@ class MediaPool extends Component {
         {
           this.props.allMedia.map(media => {
             return (
-              <MediaPoolItem id={media.id} path={media.path} scrapbookId={this.props.currentScrapbook} pageId={this.props.currentPage} />
+              <MediaPoolItem key={media.id} id={media.id} path={media.path} scrapbookId={this.props.currentScrapbook} pageId={this.props.currentPage} />
             )
             // return (
             //   <div key={media.id}>

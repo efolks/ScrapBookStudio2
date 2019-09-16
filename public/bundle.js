@@ -1288,6 +1288,7 @@ function (_Component) {
         className: "box"
       }, this.props.allMedia.map(function (media) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MediaPoolItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          key: media.id,
           id: media.id,
           path: media.path,
           scrapbookId: _this.props.currentScrapbook,
@@ -4328,7 +4329,7 @@ var initialState = {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, me, auth, logout, getcurrentScrapbook, getcurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createcurrentPageThunk, deletecurrentPageThunk, getAllScrapbookMediaThunk, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk */
+/*! exports provided: default, me, auth, logout, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk, getCurrentScrapbook, getCurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createCurrentPageThunk, deleteCurrentPageThunk, getAllScrapbookMediaThunk */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4350,9 +4351,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return _user__WEBPACK_IMPORTED_MODULE_4__["logout"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getcurrentScrapbook", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getcurrentScrapbook"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getCurrentScrapbook", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getCurrentScrapbook"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getcurrentPage", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getcurrentPage"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getCurrentPage", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getCurrentPage"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setNextAndPrevious", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["setNextAndPrevious"]; });
 
@@ -4372,9 +4373,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getAllPagesThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getAllPagesThunk"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createcurrentPageThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["createcurrentPageThunk"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createCurrentPageThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["createCurrentPageThunk"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "deletecurrentPageThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["deletecurrentPageThunk"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "deleteCurrentPageThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["deleteCurrentPageThunk"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getAllScrapbookMediaThunk", function() { return _scrapbooks__WEBPACK_IMPORTED_MODULE_5__["getAllScrapbookMediaThunk"]; });
 
@@ -4443,13 +4444,13 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, m
 /*!************************************!*\
   !*** ./client/store/scrapbooks.js ***!
   \************************************/
-/*! exports provided: getcurrentScrapbook, getcurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createcurrentPageThunk, deletecurrentPageThunk, getAllScrapbookMediaThunk, default */
+/*! exports provided: getCurrentScrapbook, getCurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createCurrentPageThunk, deleteCurrentPageThunk, getAllScrapbookMediaThunk, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getcurrentScrapbook", function() { return getcurrentScrapbook; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getcurrentPage", function() { return getcurrentPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentScrapbook", function() { return getCurrentScrapbook; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentPage", function() { return getCurrentPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setNextAndPrevious", function() { return setNextAndPrevious; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increasePageIndex", function() { return increasePageIndex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decreasePageIndex", function() { return decreasePageIndex; });
@@ -4459,8 +4460,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateScrapbookThunk", function() { return updateScrapbookThunk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteScrapbookThunk", function() { return deleteScrapbookThunk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllPagesThunk", function() { return getAllPagesThunk; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createcurrentPageThunk", function() { return createcurrentPageThunk; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletecurrentPageThunk", function() { return deletecurrentPageThunk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCurrentPageThunk", function() { return createCurrentPageThunk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCurrentPageThunk", function() { return deleteCurrentPageThunk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllScrapbookMediaThunk", function() { return getAllScrapbookMediaThunk; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -4510,7 +4511,7 @@ var getAllScrapbooks = function getAllScrapbooks(scrapbooks) {
   };
 };
 
-var getcurrentScrapbook = function getcurrentScrapbook(id) {
+var getCurrentScrapbook = function getCurrentScrapbook(id) {
   return {
     type: GET_CURRENT_SCRAPBOOK,
     id: id
@@ -4545,21 +4546,21 @@ var getAllPages = function getAllPages(pages) {
   };
 };
 
-var getcurrentPage = function getcurrentPage(id) {
+var getCurrentPage = function getCurrentPage(id) {
   return {
     type: GET_SINGLE_PAGE,
     id: id
   };
 };
 
-var createcurrentPage = function createcurrentPage(page) {
+var createCurrentPage = function createCurrentPage(page) {
   return {
     type: CREATE_SINGLE_PAGE,
     page: page
   };
 };
 
-var deletecurrentPage = function deletecurrentPage(id) {
+var deleteCurrentPage = function deleteCurrentPage(id) {
   return {
     type: DELETE_SINGLE_PAGE,
     id: id
@@ -4786,7 +4787,6 @@ var getAllPagesThunk = function getAllPagesThunk(scrapbookId) {
               case 3:
                 _ref9 = _context5.sent;
                 data = _ref9.data;
-                // console.log('pages', data)
                 dispatch(getAllPages(data));
                 _context5.next = 11;
                 break;
@@ -4810,7 +4810,7 @@ var getAllPagesThunk = function getAllPagesThunk(scrapbookId) {
     }()
   );
 };
-var createcurrentPageThunk = function createcurrentPageThunk(scrapbookid) {
+var createCurrentPageThunk = function createCurrentPageThunk(scrapbookid) {
   return (
     /*#__PURE__*/
     function () {
@@ -4830,7 +4830,7 @@ var createcurrentPageThunk = function createcurrentPageThunk(scrapbookid) {
               case 3:
                 _ref11 = _context6.sent;
                 data = _ref11.data;
-                dispatch(createcurrentPage(data));
+                dispatch(createCurrentPage(data));
                 _context6.next = 11;
                 break;
 
@@ -4853,7 +4853,7 @@ var createcurrentPageThunk = function createcurrentPageThunk(scrapbookid) {
     }()
   );
 };
-var deletecurrentPageThunk = function deletecurrentPageThunk(id) {
+var deleteCurrentPageThunk = function deleteCurrentPageThunk(id) {
   return (
     /*#__PURE__*/
     function () {
@@ -4869,7 +4869,7 @@ var deletecurrentPageThunk = function deletecurrentPageThunk(id) {
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/pages/".concat(id));
 
               case 3:
-                dispatch(deletecurrentPage(id));
+                dispatch(deleteCurrentPage(id));
                 _context7.next = 9;
                 break;
 
