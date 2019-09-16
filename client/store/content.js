@@ -83,12 +83,9 @@ const DESELECT_CANVAS_ELEMENT = 'DESELECT_CANVAS_ELEMENT'
  //Thunks
  export const getPageContentThunk = (id) => async dispatch => {
   try {
-    // console.log('PAGE ID:', id)
     const {data} = await axios.get(`/api/pages/${id}`)
     const canvas_texts = data.text
     const media = data.media
-    console.log('THUNK TEXT',canvas_texts)
-    console.log('ID', id)
     dispatch(getPageContent(canvas_texts, media))
   } catch (err) {
     console.error(err)
@@ -169,9 +166,7 @@ export const deleteSingleMediaThunk = id => async dispatch => {
 
 export const increaseFontSizeThunk = id => async dispatch => {
   try {
-    // console.log('from thunk', id)
     const {data} = await axios.put(`api/canvastext/increase/${id}`)
-    // console.log('data from thunk', data)
     dispatch(updateSingleText(data))
   } catch (err) {
     console.error(err)
