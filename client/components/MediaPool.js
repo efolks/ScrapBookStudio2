@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { getAllScrapbookMediaThunk } from '../store/scrapbooks'
-import { createSingleMediaThunk } from '../store/content';
 import MediaPoolItem from './MediaPoolItem';
 
 class MediaPool extends Component {
@@ -10,14 +9,7 @@ class MediaPool extends Component {
     this.props.fetchAllMedia(this.props.currentScrapbook)
   }
 
-  // handleMountClick = (path) => {
-  //   console.log('PATH', path)
-  //   this.props.mountToCanvas(path)
-  // }
-
   render() {
-      // console.log('PROPS from MediaPool*****', this.props)
-
     return (
       <div className="box"  >
         {
@@ -25,13 +17,6 @@ class MediaPool extends Component {
             return (
               <MediaPoolItem key={media.id} id={media.id} path={media.path} scrapbookId={this.props.currentScrapbook} pageId={this.props.currentPage} />
             )
-            // return (
-            //   <div key={media.id}>
-            //     <br />
-            //     <button type="submit" onClick={this.handleMountClick(media.path)} >Add</button>
-            //     <img  width='120px' height="120px" src={media.path}></img>
-            //   </div>
-            // )
           })
         }
       </div>

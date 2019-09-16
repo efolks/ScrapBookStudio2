@@ -4,7 +4,6 @@ module.exports = router
 
 router.get('/:id', async (req, res, next) => {
   try {
-      console.log('**************REQ.PARMAS',  req.params)
     const { id } = req.params;
     const media = await Media.findByPk(id);
     res.status(200).json(media)
@@ -28,9 +27,7 @@ router.post('/cloudinary', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
       const media = await Media.findByPk(req.params.id)
-      console.log('media api', media);
       const updatedMedia = await media.update(req.body)
-      console.log('updatedMedia', updatedMedia);
       res.status(200).json(updatedMedia)
   } catch(err) {next(err)}
 })

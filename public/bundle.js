@@ -1232,8 +1232,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_scrapbooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/scrapbooks */ "./client/store/scrapbooks.js");
-/* harmony import */ var _store_content__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/content */ "./client/store/content.js");
-/* harmony import */ var _MediaPoolItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MediaPoolItem */ "./client/components/MediaPoolItem.js");
+/* harmony import */ var _MediaPoolItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MediaPoolItem */ "./client/components/MediaPoolItem.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1257,7 +1256,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var MediaPool =
 /*#__PURE__*/
 function (_Component) {
@@ -1273,33 +1271,22 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllMedia(this.props.currentScrapbook);
-    } // handleMountClick = (path) => {
-    //   console.log('PATH', path)
-    //   this.props.mountToCanvas(path)
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
       var _this = this;
 
-      // console.log('PROPS from MediaPool*****', this.props)
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "box"
       }, this.props.allMedia.map(function (media) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MediaPoolItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MediaPoolItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
           key: media.id,
           id: media.id,
           path: media.path,
           scrapbookId: _this.props.currentScrapbook,
           pageId: _this.props.currentPage
-        }); // return (
-        //   <div key={media.id}>
-        //     <br />
-        //     <button type="submit" onClick={this.handleMountClick(media.path)} >Add</button>
-        //     <img  width='120px' height="120px" src={media.path}></img>
-        //   </div>
-        // )
+        });
       }));
     }
   }]);
@@ -1358,6 +1345,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1367,36 +1356,35 @@ var MediaPoolItem =
 function (_Component) {
   _inherits(MediaPoolItem, _Component);
 
-  function MediaPoolItem(props) {
+  function MediaPoolItem() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, MediaPoolItem);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MediaPoolItem).call(this, props));
-    _this.handleMountClick = _this.handleMountClick.bind(_assertThisInitialized(_this));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(MediaPoolItem)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "handleMountClick", function () {
+      _this.props.mountToCanvas({
+        path: _this.props.path,
+        scrapbookId: _this.props.scrapbookId,
+        pageId: _this.props.pageId
+      });
+    });
+
     return _this;
   }
 
   _createClass(MediaPoolItem, [{
-    key: "handleMountClick",
-    value: function handleMountClick() {
-      // console.log('props from MediaPoolItem', this.props)
-      this.props.mountToCanvas({
-        path: this.props.path,
-        scrapbookId: this.props.scrapbookId,
-        pageId: this.props.pageId
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      // console.log('**&props****', this.props)
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        onClick: function onClick() {
-          return _this2.handleMountClick();
-        },
+        onClick: this.handleMountClick,
         width: "120px",
         height: "120px",
         src: this.props.path
@@ -4329,7 +4317,7 @@ var initialState = {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, me, auth, logout, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk, getCurrentScrapbook, getCurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createCurrentPageThunk, deleteCurrentPageThunk, getAllScrapbookMediaThunk */
+/*! exports provided: default, me, auth, logout, getCurrentScrapbook, getCurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createCurrentPageThunk, deleteCurrentPageThunk, getAllScrapbookMediaThunk, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4912,8 +4900,6 @@ var getAllScrapbookMediaThunk = function getAllScrapbookMediaThunk(scrapbookId) 
               case 3:
                 _ref14 = _context8.sent;
                 data = _ref14.data;
-                // const {data} = await axios.get(`/api/media/${scrapbookId}`)
-                // console.log('***************MEDIA POOL DATA ***', data)
                 dispatch(getAllScrapbookMedia(data));
                 _context8.next = 11;
                 break;

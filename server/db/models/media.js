@@ -4,7 +4,6 @@ const db = require('../db')
 const Media = db.define('media', {
     path: {
         type: Sequelize.TEXT,
-        // allowNull: false,
         validate: {
             notEmpty: true,
             isUrl: true
@@ -12,17 +11,14 @@ const Media = db.define('media', {
     },
     xCoord: {
         type: Sequelize.FLOAT,
-        // allowNull: false,
         defaultValue: 50
     },
     yCoord: {
         type: Sequelize.FLOAT,
-        // allowNull: false,
         defaultValue: 50
     },
     rotation: {
         type: Sequelize.FLOAT,
-        // allowNull: false,
         defaultValue: 0
     },
     width: {
