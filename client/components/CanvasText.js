@@ -55,7 +55,6 @@ class CanvasText extends Component {
 
 const mapState = (state) => {
   return {
-    editorText: state.content.editorText,
     selected: state.content.selectedText,
     // xCoord: state.currentText.xCoord,
     // yCoord: state.currentText.yCoord,

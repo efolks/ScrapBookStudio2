@@ -11,7 +11,6 @@ const GET_SINGLE_TEXT = 'GET_SINGLE_TEXT'
 const UPDATE_SINGLE_TEXT = 'UPDATE_SINGLE_TEXT'
 const CREATE_SINGLE_TEXT = 'CREATE_SINGLE_TEXT'
 const DELETE_SINGLE_TEXT = 'DELETE_SINGLE_TEXT'
-const GET_EDITOR_TEXT = 'GET_EDITOR_TEXT'
 
 const GET_SINGLE_MEDIA = 'GET_SINGLE_MEDIA'
 const UPDATE_SINGLE_MEDIA = 'UPDATE_SINGLE_MEDIA'
@@ -69,11 +68,6 @@ const DESELECT_CANVAS_ELEMENT = 'DESELECT_CANVAS_ELEMENT'
  const deleteSingleMedia = (id) => ({
      type: DELETE_SINGLE_MEDIA,
      id
- })
-
- export const getEditorText = (content) => ({
-      type: GET_EDITOR_TEXT,
-      content
  })
 
  export const deselectCanvasElement = () => ({
@@ -189,8 +183,7 @@ const initialState = {
     allText: [],
     selectedText: '',
     allMedia: [],
-    selectedMedia: 0,
-    editorText: ''
+    selectedMedia: 0
 }
 
 //Reducer
@@ -204,9 +197,6 @@ export default function(state = initialState, action) {
       return newState
     case GET_SINGLE_TEXT:
       newState.selectedText = action.id
-      return newState
-    case GET_EDITOR_TEXT:
-      newState.editorText = action.content
       return newState
     case CREATE_SINGLE_TEXT:
       newState.allText = [...newState.allText, action.text]

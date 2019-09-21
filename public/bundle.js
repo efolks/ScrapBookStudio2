@@ -523,7 +523,6 @@ var mapState = function mapState(state) {
   return {
     allText: state.content.allText,
     allMedia: state.content.allMedia,
-    editorText: state.content.editorText,
     currentPage: state.scrapbooks.currentPage,
     nextPage: state.scrapbooks.nextPage,
     previousPage: state.scrapbooks.previousPage,
@@ -874,7 +873,6 @@ function (_Component) {
 
 var mapState = function mapState(state) {
   return {
-    editorText: state.content.editorText,
     selected: state.content.selectedText // xCoord: state.currentText.xCoord,
     // yCoord: state.currentText.yCoord,
     // content: state.currentText.content,
@@ -1749,7 +1747,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _StaticCanvasMedia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./StaticCanvasMedia */ "./client/components/StaticCanvasMedia.js");
 /* harmony import */ var _StaticCanvasText__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./StaticCanvasText */ "./client/components/StaticCanvasText.js");
 /* harmony import */ var _store_scrapbooks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../store/scrapbooks */ "./client/store/scrapbooks.js");
-/* harmony import */ var _MediaResizer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./MediaResizer */ "./client/components/MediaResizer.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1771,7 +1768,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1991,7 +1987,6 @@ var mapState = function mapState(state) {
   return {
     allText: state.content.allText,
     allMedia: state.content.allMedia,
-    editorText: state.content.editorText,
     currentPage: state.scrapbooks.currentPage,
     nextPage: state.scrapbooks.nextPage,
     previousPage: state.scrapbooks.previousPage,
@@ -2308,8 +2303,7 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__["Text"] // draggable
-      , {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__["Text"], {
         text: this.props.content,
         x: this.props.xCoord,
         y: this.props.yCoord,
@@ -2331,12 +2325,7 @@ function (_Component) {
 
 var mapState = function mapState(state) {
   return {
-    editorText: state.content.editorText,
-    selected: state.content.selectedText // xCoord: state.currentText.xCoord,
-    // yCoord: state.currentText.yCoord,
-    // content: state.currentText.content,
-    // size: state.currentText.size
-
+    selected: state.content.selectedText
   };
 };
 
@@ -2487,12 +2476,6 @@ var mapState = function mapState(state) {
 
 var mapDispatch = function mapDispatch(dispatch) {
   return {
-    updateText: function updateText(id, updatedProp) {
-      return dispatch(Object(_store_content__WEBPACK_IMPORTED_MODULE_3__["updateSingleTextThunk"])(id, updatedProp));
-    },
-    getEditorText: function getEditorText(content) {
-      return dispatch(Object(_store_content__WEBPACK_IMPORTED_MODULE_3__["getEditorText"])(content));
-    },
     createText: function createText(pageId, content) {
       return dispatch(Object(_store_content__WEBPACK_IMPORTED_MODULE_3__["createSingleTextThunk"])(pageId, content));
     },
@@ -3422,7 +3405,7 @@ socket.on('textUpdate', function (newProps) {
 /*!*********************************!*\
   !*** ./client/store/content.js ***!
   \*********************************/
-/*! exports provided: getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk, default */
+/*! exports provided: getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3431,7 +3414,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSingleText", function() { return updateSingleText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSingleMedia", function() { return getSingleMedia; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSingleMedia", function() { return updateSingleMedia; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEditorText", function() { return getEditorText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deselectCanvasElement", function() { return deselectCanvasElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPageContentThunk", function() { return getPageContentThunk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createSingleTextThunk", function() { return createSingleTextThunk; });
@@ -3474,7 +3456,6 @@ var GET_SINGLE_TEXT = 'GET_SINGLE_TEXT';
 var UPDATE_SINGLE_TEXT = 'UPDATE_SINGLE_TEXT';
 var CREATE_SINGLE_TEXT = 'CREATE_SINGLE_TEXT';
 var DELETE_SINGLE_TEXT = 'DELETE_SINGLE_TEXT';
-var GET_EDITOR_TEXT = 'GET_EDITOR_TEXT';
 var GET_SINGLE_MEDIA = 'GET_SINGLE_MEDIA';
 var UPDATE_SINGLE_MEDIA = 'UPDATE_SINGLE_MEDIA';
 var CREATE_SINGLE_MEDIA = 'CREATE_SINGLE_MEDIA';
@@ -3546,12 +3527,6 @@ var deleteSingleMedia = function deleteSingleMedia(id) {
   };
 };
 
-var getEditorText = function getEditorText(content) {
-  return {
-    type: GET_EDITOR_TEXT,
-    content: content
-  };
-};
 var deselectCanvasElement = function deselectCanvasElement() {
   return {
     type: DESELECT_CANVAS_ELEMENT
@@ -4038,8 +4013,7 @@ var initialState = {
   allText: [],
   selectedText: '',
   allMedia: [],
-  selectedMedia: 0,
-  editorText: '' //Reducer
+  selectedMedia: 0 //Reducer
   // eslint-disable-next-line complexity
 
 };
@@ -4057,10 +4031,6 @@ var initialState = {
 
     case GET_SINGLE_TEXT:
       newState.selectedText = action.id;
-      return newState;
-
-    case GET_EDITOR_TEXT:
-      newState.editorText = action.content;
       return newState;
 
     case CREATE_SINGLE_TEXT:
@@ -4247,7 +4217,7 @@ var initialState = {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, me, auth, logout, getCurrentScrapbook, getCurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createCurrentPageThunk, deleteCurrentPageThunk, getAllScrapbookMediaThunk, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, getEditorText, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk */
+/*! exports provided: default, me, auth, logout, getCurrentScrapbook, getCurrentPage, setNextAndPrevious, increasePageIndex, decreasePageIndex, setPageIndex, getAllScrapbooksThunk, createScrapbookThunk, updateScrapbookThunk, deleteScrapbookThunk, getAllPagesThunk, createCurrentPageThunk, deleteCurrentPageThunk, getAllScrapbookMediaThunk, getSingleText, updateSingleText, getSingleMedia, updateSingleMedia, deselectCanvasElement, getPageContentThunk, createSingleTextThunk, updateSingleTextThunk, deleteSingleTextThunk, createSingleMediaThunk, createSingleCloudMediaThunk, updateSingleMediaThunk, getSingleMediaThunk, deleteSingleMediaThunk, increaseFontSizeThunk, decreaseFontSizeThunk */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4304,8 +4274,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getSingleMedia", function() { return _content__WEBPACK_IMPORTED_MODULE_6__["getSingleMedia"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "updateSingleMedia", function() { return _content__WEBPACK_IMPORTED_MODULE_6__["updateSingleMedia"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getEditorText", function() { return _content__WEBPACK_IMPORTED_MODULE_6__["getEditorText"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "deselectCanvasElement", function() { return _content__WEBPACK_IMPORTED_MODULE_6__["deselectCanvasElement"]; });
 

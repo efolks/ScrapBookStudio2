@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Stage, Layer, Text, Rect} from 'react-konva'
+import {Stage, Layer} from 'react-konva'
 import {getPageContentThunk, deselectCanvasElement} from '../store/content'
 import {connect, ReactReduxContext, Provider} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -15,7 +15,6 @@ import {
   getCurrentPage,
   getCurrentScrapbook
 } from '../store/scrapbooks'
-import MediaResizer from './MediaResizer'
 
 class StaticCanvas extends Component {
   constructor() {
@@ -145,7 +144,6 @@ const mapState = state => {
   return {
     allText: state.content.allText,
     allMedia: state.content.allMedia,
-    editorText: state.content.editorText,
     currentPage: state.scrapbooks.currentPage,
     nextPage: state.scrapbooks.nextPage,
     previousPage: state.scrapbooks.previousPage,

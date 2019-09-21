@@ -27,7 +27,6 @@ class StaticCanvasText extends Component {
   render() {
     return (
       <Text
-        // draggable
         text={this.props.content}
         x={this.props.xCoord}
         y={this.props.yCoord}
@@ -47,12 +46,7 @@ class StaticCanvasText extends Component {
 
 const mapState = (state) => {
   return {
-    editorText: state.content.editorText,
-    selected: state.content.selectedText,
-    // xCoord: state.currentText.xCoord,
-    // yCoord: state.currentText.yCoord,
-    // content: state.currentText.content,
-    // size: state.currentText.size
+    selected: state.content.selectedText
   }
 }
 

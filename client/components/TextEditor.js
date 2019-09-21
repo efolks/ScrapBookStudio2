@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Editor } from 'slate-react'
 import {connect} from 'react-redux'
-import { updateSingleTextThunk, getEditorText, createSingleTextThunk, deleteSingleTextThunk, increaseFontSizeThunk, decreaseFontSizeThunk } from '../store/content'
+import { createSingleTextThunk, deleteSingleTextThunk, increaseFontSizeThunk, decreaseFontSizeThunk } from '../store/content'
 import Plain from 'slate-plain-serializer'
 
 const initialValue = Plain.deserialize(
@@ -58,8 +58,6 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    updateText: (id, updatedProp) => dispatch(updateSingleTextThunk(id, updatedProp)),
-    getEditorText: (content) => dispatch(getEditorText(content)),
     createText: (pageId, content) => dispatch(createSingleTextThunk(pageId, content)),
     deleteText: (textId) => dispatch(deleteSingleTextThunk(textId)),
     increaseFontSize: (id) => dispatch(increaseFontSizeThunk(id)),

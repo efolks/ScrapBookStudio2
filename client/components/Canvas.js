@@ -207,7 +207,6 @@ const mapState = state => {
   return {
     allText: state.content.allText,
     allMedia: state.content.allMedia,
-    editorText: state.content.editorText,
     currentPage: state.scrapbooks.currentPage,
     nextPage: state.scrapbooks.nextPage,
     previousPage: state.scrapbooks.previousPage,
